@@ -11,6 +11,7 @@ import {
   Sheet,
   TextField,
   Workbook,
+  SpaceConfig
 } from '@flatfile/configure'
 
 /**
@@ -23,23 +24,17 @@ const MySheet = new Sheet('MySheet', {
   lastName: TextField(),
   age: NumberField(),
 })
-
-/**
- * Portals
- * Define your Portals here, or import them:
- * import { YourPortal } from './path-to-your-portal/your-portal.ts'
- */
-const MyPortal = new Portal({
-  name: 'MyPortal',
-  sheet: 'MySheet',
-})
-
-// Workbook  - Update to reference your Workbook with Sheet(s) and Portal(s)
-export default new Workbook({
-  name: 'MyWorkbook',
-  namespace: 'my-workbook',
-  portals: [MyPortal],
-  sheets: {
-    MySheet,
+export default new SpaceConfig({
+  name: 'Kyle Space Configuration',
+  slug: 'Kyle_Space_Configuration_sc',
+  workbookConfigs: {
+    basic: new Workbook({
+      name: 'Kyle Workbook',
+      slug: 'Kyle_Workbook_wb',
+      namespace: 'Kyle Workbook',
+      sheets: {
+        MySheet,
+      },
+    }),
   },
-})
+ })
